@@ -1,0 +1,21 @@
+.hidden_search_form{
+    display: none;
+}
+#search_form{
+    margin-top: 50px;
+}
+#search_result{
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.search_result_header{
+    background: #a8a8a8;
+    line-height: 1.8;
+    padding-right: 10px;
+    border-top: unset;
+}
+ul {
+    list-style-type: none;
+}
