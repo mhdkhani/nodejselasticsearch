@@ -1,9 +1,19 @@
 const connection = require('./elasticsearch');
 const information = require('./information');
-const test = require('./test');
+const versionModel = require("../model/SearchVersion");
 
-function createIndex() {
-    var version = newIndexVersion();
+
+/**
+ * create reindex in elasticsearch
+ */
+async function createIndex() {
+    //var version = newIndexVersion();
+    var versionM = await versionModel.findOne().sort('-_id');
+    var newVersion = 0;
+    if (versionM) {
+        newVersion = versionM.version;
+    }
+    var version = Number(newVersion) + 1;
     connection.index({
         'index': indexName(version),
         'body': {
@@ -219,6 +229,9 @@ function createIndex() {
     removeOldVersion(version);
 }
 
+/**
+ * index name for create index
+ **/
 function indexName(version) {
     return information.generateIndexName(version);
 }
@@ -228,6 +241,9 @@ function newIndexVersion() {
     return information.currentIndexVersion() + 1;
 }
 
+/**
+ * after reindex remove old versions in elastic
+ */
 function removeOldVersion(newVersion) {
     information.removeOldVersion(newVersion);
 }
