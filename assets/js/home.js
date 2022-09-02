@@ -23,7 +23,7 @@ jQuery(function ($) {
             var ul1 = document.getElementById('search_result_items')
             var query_search = $("#search_form_input").val();
             $.ajax({
-                type: "post",
+                type: "get",
                 url: '/api/search',
                 data: {query_search:query_search},
                 success: function(response){

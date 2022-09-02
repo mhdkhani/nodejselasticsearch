@@ -7,5 +7,5 @@ router.get('/', indexController.ShowForm);
 //create index page
 router.get('/createindex', indexController.CreateIndex);
 //searching route
-router.post('/api/search', apiController.doSearch);
+router.get('/api/search', apiController.doSearch);
 module.exports = router;

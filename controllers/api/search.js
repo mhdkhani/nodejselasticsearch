@@ -5,6 +5,9 @@ const doSearch = (req,res) => {
     items.push({name:"John", sku:"Doe",url:"blue"});
     items.push({name:"John", sku:"Doe",url:"blue"});
     items.push({name:"John", sku:"Doe",url:"blue"});*/
+    if (req.query.query_search && req.query.query_search !== ''){
+
+    }
     res.status(200).send({items: items});
 };
 module.exports.doSearch = doSearch;
