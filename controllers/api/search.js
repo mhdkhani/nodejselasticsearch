@@ -1,6 +1,10 @@
 const doSearch = (req,res) => {
-    var items = [];
+    const items = [];
     //items.push(req.body.query_search);
-    res.status(200).send({id: items});
+    /*const items = [];
+    items.push({name:"John", sku:"Doe",url:"blue"});
+    items.push({name:"John", sku:"Doe",url:"blue"});
+    items.push({name:"John", sku:"Doe",url:"blue"});*/
+    res.status(200).send({items: items});
 };
 module.exports.doSearch = doSearch;
