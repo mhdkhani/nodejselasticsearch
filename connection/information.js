@@ -2,30 +2,17 @@ const connection = require('./elasticsearch');
 const mongoConnection = require('../db/connect');
 const versionModel = require('../model/SearchVersion');
 
-//test
-async function currentIndexVersionTest() {
-    var versionM = await versionModel.findOne().sort('-_id');
-    console.log(versionM)
-}
-
 /**
  * fetch current index name from database
  */
-function currentIndexVersion() {
-
-    versionModel.findOne({})
-        .then(function (version) {
-            /*if (!version) {
-                console.log(0)
-            } else {
-                console.log(version.version)
-            }*/
-            // return version.version;
-        })
-        .catch(function (err) {
+const currentIndexVersion = async () => {
+    return versionModel.findOne({})
+        .then(data => {
+        return data;
+    }).catch(err => {
+            return err;
         });
-    return 22;
-}
+};
 
 
 /**
@@ -58,7 +45,6 @@ function removeOldVersion(newVersion) {
     }
 }
 
-module.exports.currentIndexVersionTest = currentIndexVersionTest;
 module.exports.currentIndexVersion = currentIndexVersion;
 module.exports.generateIndexName = generateIndexName;
 module.exports.removeOldVersion = removeOldVersion;

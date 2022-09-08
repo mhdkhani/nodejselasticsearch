@@ -8,7 +8,7 @@ const ShowForm = (req,res,next) => {
 
 const CreateIndex = (req,res,next) => {
     create.createIndex();
-    res.render('search' , { title: 'Search Engine',layout:'layout'} );
+    res.render('search' , { title: 'Search Engine',base_url:req.get('host'),layout:'layout'} );
 };
 
 module.exports.ShowForm = ShowForm;
