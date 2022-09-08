@@ -1,13 +1,10 @@
+const search = require('../../connection/search');
 const doSearch = (req,res) => {
-    const items = [];
-    //items.push(req.body.query_search);
-    /*const items = [];
-    items.push({name:"John", sku:"Doe",url:"blue"});
-    items.push({name:"John", sku:"Doe",url:"blue"});
-    items.push({name:"John", sku:"Doe",url:"blue"});*/
     if (req.query.query_search && req.query.query_search !== ''){
-
+        search.doSearch(req.query.query_search)
+            .then(function(result) {
+            res.status(200).send({items: result});
+        });
     }
-    res.status(200).send({items: items});
 };
 module.exports.doSearch = doSearch;
